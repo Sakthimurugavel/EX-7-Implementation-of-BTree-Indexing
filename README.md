@@ -1,19 +1,19 @@
 # EX 7: Implementation of B-Tree Indexing
-## Date: 
+ 
 ## AIM: 
 To implement B-tree indexing and to search an element in the B-tree using python
 ## ALGORITHM:
-<div align="justify">
+
 1. Starting from the root node, compare k with the first key of the node.<br>
 2. If k = the first key of the node, return the node and the index.<br>
 3. If k.leaf = true, return NULL (i.e. not found).<br>
-If k < the first key of the root node, search the left child of this key recursively.<br>
+   If k < the first key of the root node, search the left child of this key recursively.><br>
 4. If there is more than one key in the current node and k > the first key, compare k with the next key in the node.
-If k < next key, search the left child of this key (ie. k lies in between the first and the second keys).
-Else, search the right child of the key.<br>
+   If k < next key, search the left child of this key (ie. k lies in between the first and the second keys).
+   Else, search the right child of the key.><br>
 5. Repeat steps 1 to 4 until the leaf is reached.<br>
-</div>
-### PROGRAM:
+
+## PROGRAM:
   
   ```python
 # Searching a key on a B-tree in Python
@@ -98,19 +98,15 @@ class BTree:
         return None
       else:
         return self.search_key(k, x.child[i])
-      
     else:
       return self.search_key(k, self.root)
 
 
 def main():
   B = BTree(3)
-
   for i in range(10):
     B.insert((i, 2 * i))
-
   B.print_tree(B.root)
-
   if B.search_key(8) is not None:
     print("\nFound")
   else:
